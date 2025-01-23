@@ -29,7 +29,6 @@ func (r *Repository) Get(_ context.Context, id string) (*model.Metadata, error) 
 		return nil, repository.ErrNotFound
 	}
 	return m, nil
-
 }
 
 // Put add the new metadata by proven id.
