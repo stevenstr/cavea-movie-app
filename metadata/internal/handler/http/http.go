@@ -1,4 +1,4 @@
-package handler
+package http
 
 import (
 	"encoding/json"
@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 
-	metadata "movie.com/metadata/internal/controller"
+	"movie.com/metadata/internal/controller/metadata"
 	"movie.com/metadata/internal/repository"
 )
 
