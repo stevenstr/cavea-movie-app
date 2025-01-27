@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 
-	"movie.com/metadata/internal/repository"
+	"movie.com/rating/internal/repository"
 	"movie.com/rating/pkg/model"
 )
 
