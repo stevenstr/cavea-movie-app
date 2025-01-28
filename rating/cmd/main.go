@@ -16,6 +16,7 @@ func main() {
 	h := httpHandler.New(ctrl)
 
 	http.Handle("/rating", http.HandlerFunc(h.HandleRating))
+
 	if err := http.ListenAndServe(":8082", nil); err != nil {
 		panic(err)
 	}
