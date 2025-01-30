@@ -25,13 +25,13 @@ func New(ctrl *rating.Controller) *Handler {
 func (h *Handler) HandleRating(w http.ResponseWriter, req *http.Request) {
 	recordID := model.RecordID(req.FormValue("id"))
 	if recordID == "" {
-		w.WriteHeader(http.StatusBadRequest) // 400
+		http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
 		return
 	}
 
 	recordType := model.RecordType(req.FormValue("type"))
 	if recordType == "" {
-		w.WriteHeader(http.StatusBadRequest)
+		http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
 		return
 	}
 
@@ -39,7 +39,7 @@ func (h *Handler) HandleRating(w http.ResponseWriter, req *http.Request) {
 	case http.MethodGet:
 		v, err := h.ctrl.GetAggregatedRating(req.Context(), recordID, recordType)
 		if err != nil && errors.Is(err, rating.ErrNotFound) {
-			w.WriteHeader(http.StatusNotFound) // 404
+			http.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)
 			return
 		}
 
@@ -52,16 +52,16 @@ func (h *Handler) HandleRating(w http.ResponseWriter, req *http.Request) {
 		v, err := strconv.ParseFloat(req.FormValue("value"), 64)
 
 		if err != nil {
-			w.WriteHeader(http.StatusBadRequest)
+			http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
 			return
 		}
 
 		if err := h.ctrl.PutRating(req.Context(), recordID, recordType, &model.Rating{UserID: userID, Value: model.RatingValue(v)}); err != nil {
-			log.Printf("Repository pu error: %v\n", err)
-			w.WriteHeader(http.StatusInternalServerError) // 50
+			log.Printf("Repository put error: %v\n", err)
+			http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		}
 
 	default:
-		w.WriteHeader(http.StatusBadRequest) // 400
+		http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
 	}
 }

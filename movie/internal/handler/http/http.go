@@ -20,11 +20,12 @@ func New(ctrl *movie.Controller) *Handler {
 func (h *Handler) GetMovieDetails(w http.ResponseWriter, req *http.Request) {
 	id := req.FormValue("id")
 	details, err := h.ctrl.Get(req.Context(), id)
-	if err != nil && errors.Is(err, movie.ErrNotFound) {
-		w.WriteHeader(http.StatusNotFound) // 404
-		return
-	} else if err != nil {
-		w.WriteHeader(http.StatusInternalServerError) // 500
+	if err != nil {
+		if errors.Is(err, movie.ErrNotFound) {
+			http.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)
+			return
+		}
+		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
 	}
 

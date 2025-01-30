@@ -21,19 +21,19 @@ func New(ctrl *metadata.Controller) *Handler {
 func (h *Handler) GetMetadata(w http.ResponseWriter, req *http.Request) {
 	id := req.FormValue("id")
 	if id == "" {
-		w.WriteHeader(http.StatusBadRequest) // 400
+		http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
 		return
 	}
 
-	ctx := req.Context()
-	m, err := h.ctrl.Get(ctx, id)
+	m, err := h.ctrl.Get(req.Context(), id)
 
-	if err != nil && errors.Is(err, repository.ErrNotFound) {
-		w.WriteHeader(http.StatusNotFound) // 404
-		return
-	} else if err != nil {
+	if err != nil {
+		if errors.Is(err, repository.ErrNotFound) {
+			http.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)
+			return
+		}
 		log.Printf("Repository get error: %v\n", err)
-		w.WriteHeader(http.StatusInternalServerError) // 500
+		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
 	}
 
