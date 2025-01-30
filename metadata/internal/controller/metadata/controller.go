@@ -4,8 +4,8 @@ import (
 	"context"
 	"errors"
 
-	"movie.com/metadata/internal/repository"
-	"movie.com/metadata/pkg/model"
+	"github.com/stevenstr/cavea-movie-app/metadata/internal/repository"
+	"github.com/stevenstr/cavea-movie-app/metadata/pkg/model"
 )
 
 var ErrNotFound = errors.New("not found")

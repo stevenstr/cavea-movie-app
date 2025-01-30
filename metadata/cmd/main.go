@@ -4,9 +4,9 @@ import (
 	"log"
 	"net/http"
 
-	"movie.com/metadata/internal/controller/metadata"
-	httpHandler "movie.com/metadata/internal/handler/http"
-	"movie.com/metadata/internal/repository/memory"
+	"github.com/stevenstr/cavea-movie-app/metadata/internal/controller/metadata"
+	httpHandler "github.com/stevenstr/cavea-movie-app/metadata/internal/handler/http"
+	"github.com/stevenstr/cavea-movie-app/metadata/internal/repository/memory"
 )
 
 func main() {

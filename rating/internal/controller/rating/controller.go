@@ -4,8 +4,8 @@ import (
 	"context"
 	"errors"
 
-	"movie.com/rating/internal/repository"
-	"movie.com/rating/pkg/model"
+	"github.com/stevenstr/cavea-movie-app/rating/internal/repository"
+	"github.com/stevenstr/cavea-movie-app/rating/pkg/model"
 )
 
 var ErrNotFound = errors.New("ratings not found for a record")

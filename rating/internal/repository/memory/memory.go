@@ -3,8 +3,8 @@ package memory
 import (
 	"context"
 
-	"movie.com/rating/internal/repository"
-	"movie.com/rating/pkg/model"
+	"github.com/stevenstr/cavea-movie-app/rating/internal/repository"
+	"github.com/stevenstr/cavea-movie-app/rating/pkg/model"
 )
 
 type Repository struct {

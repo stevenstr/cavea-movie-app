@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 
-	"movie.com/movie/internal/controller/movie"
+	"github.com/stevenstr/cavea-movie-app/movie/internal/controller/movie"
 )
 
 type Handler struct {

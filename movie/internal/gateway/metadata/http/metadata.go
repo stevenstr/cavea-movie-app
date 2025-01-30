@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"movie.com/metadata/pkg/model"
-	"movie.com/movie/internal/gateway"
+	"github.com/stevenstr/cavea-movie-app/metadata/pkg/model"
+	"github.com/stevenstr/cavea-movie-app/movie/internal/gateway"
 )
 
 type Gateway struct {

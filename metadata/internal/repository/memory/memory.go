@@ -4,8 +4,8 @@ import (
 	"context"
 	"sync"
 
-	"movie.com/metadata/internal/repository"
-	"movie.com/metadata/pkg/model"
+	"github.com/stevenstr/cavea-movie-app/metadata/internal/repository"
+	"github.com/stevenstr/cavea-movie-app/metadata/pkg/model"
 )
 
 // Repository defines in memory reprisentation set of metadata.

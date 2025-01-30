@@ -4,10 +4,10 @@ import (
 	"log"
 	"net/http"
 
-	"movie.com/movie/internal/controller/movie"
-	metadatagateway "movie.com/movie/internal/gateway/metadata/http"
-	ratinggateway "movie.com/movie/internal/gateway/rating/http"
-	httphandler "movie.com/movie/internal/handler/http"
+	"github.com/stevenstr/cavea-movie-app/movie/internal/controller/movie"
+	metadatagateway "github.com/stevenstr/cavea-movie-app/movie/internal/gateway/metadata/http"
+	ratinggateway "github.com/stevenstr/cavea-movie-app/movie/internal/gateway/rating/http"
+	httphandler "github.com/stevenstr/cavea-movie-app/movie/internal/handler/http"
 )
 
 func main() {

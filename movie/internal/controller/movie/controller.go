@@ -4,10 +4,10 @@ import (
 	"context"
 	"errors"
 
-	metadatamodel "movie.com/metadata/pkg/model"
-	"movie.com/movie/internal/gateway"
-	"movie.com/movie/pkg/model"
-	ratingmodel "movie.com/rating/pkg/model"
+	metadatamodel "github.com/stevenstr/cavea-movie-app/metadata/pkg/model"
+	"github.com/stevenstr/cavea-movie-app/movie/internal/gateway"
+	"github.com/stevenstr/cavea-movie-app/movie/pkg/model"
+	ratingmodel "github.com/stevenstr/cavea-movie-app/rating/pkg/model"
 )
 
 var ErrNotFound = errors.New("movie metadata not found")

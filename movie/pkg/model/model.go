@@ -1,6 +1,6 @@
 package model
 
-import "movie.com/metadata/pkg/model"
+import "github.com/stevenstr/cavea-movie-app/metadata/pkg/model"
 
 // MovieDetails include movie metadata
 // and its aggregated reting.

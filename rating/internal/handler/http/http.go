@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"movie.com/rating/internal/controller/rating"
-	"movie.com/rating/pkg/model"
+	"github.com/stevenstr/cavea-movie-app/rating/internal/controller/rating"
+	"github.com/stevenstr/cavea-movie-app/rating/pkg/model"
 )
 
 // Handler defines rating service controller.

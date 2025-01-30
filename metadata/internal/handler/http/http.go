@@ -6,8 +6,8 @@ import (
 	"log"
 	"net/http"
 
-	"movie.com/metadata/internal/controller/metadata"
-	"movie.com/metadata/internal/repository"
+	"github.com/stevenstr/cavea-movie-app/metadata/internal/controller/metadata"
+	"github.com/stevenstr/cavea-movie-app/metadata/internal/repository"
 )
 
 type Handler struct {
