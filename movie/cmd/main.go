@@ -12,13 +12,15 @@ import (
 
 func main() {
 	log.Println("Starting the movie service")
+
+	mux := http.NewServeMux()
 	metadataGateway := metadatagateway.New("localhost:8081")
 	ratingGateway := ratinggateway.New("localhost:8082")
 	ctrl := movie.New(ratingGateway, metadataGateway)
 	h := httphandler.New(ctrl)
+	mux.HandleFunc("/movie", h.GetMovieDetails)
 
-	http.Handle("/movie", http.HandlerFunc(h.GetMovieDetails))
-	if err := http.ListenAndServe(":8083", nil); err != nil {
-		panic(err)
+	if err := http.ListenAndServe(":8083", mux); err != nil {
+		log.Fatal(err)
 	}
 }

@@ -15,3 +15,10 @@ localhost:8082
 ```sh
 localhost:8083 
 ```
+
+run app
+
+
+
+run consul
+consul agent -dev -node machine

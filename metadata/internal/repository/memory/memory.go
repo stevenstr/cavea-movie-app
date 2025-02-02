@@ -10,7 +10,7 @@ import (
 
 // Repository defines in memory reprisentation set of metadata.
 type Repository struct {
-	mux  sync.RWMutex
+	mx   sync.RWMutex
 	data map[string]*model.Metadata
 }
 
@@ -21,8 +21,8 @@ func New() *Repository {
 
 // Get retrive the metadata from repo by id.
 func (r *Repository) Get(_ context.Context, id string) (*model.Metadata, error) {
-	r.mux.RLock()
-	defer r.mux.RUnlock()
+	r.mx.RLock()
+	defer r.mx.RUnlock()
 
 	m, ok := r.data[id]
 	if !ok {
@@ -33,8 +33,8 @@ func (r *Repository) Get(_ context.Context, id string) (*model.Metadata, error) 
 
 // Put add the new metadata by proven id.
 func (r *Repository) Put(_ context.Context, id string, metadata *model.Metadata) error {
-	r.mux.Lock()
-	defer r.mux.Unlock()
+	r.mx.Lock()
+	defer r.mx.Unlock()
 
 	r.data[id] = metadata
 
